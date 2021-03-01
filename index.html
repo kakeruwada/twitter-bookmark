@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <!--bootstrapのCSSを読み込み-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+        <!---fontawesomeのをcss-->
+        <link rel="stylesheet" href="styles.css">
+        <!-- style.cssを読み込み -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!--スマホブラウザでも正常に表示するためのmetaタグ-->
+        <meta name="author" content="kakeru wada">
+        <title>twitterブックマークを整理する場所</title>
+        <meta name="description" content="sort bookmarks">
+
+        <!--favicon後で設定する-->
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script type="text/javascript" src="func.js"></script>
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<header>
+    <div class="header-blank">
+    </div>
+    <nav class="navbar bg-light navbar-light fixed-top">
+        <a href="#home" class="navbar-brand"><i class="fas fa-bible" alt="icon"></i></a>
+    </nav>
+</header>
+
+<div class="headline" id="home">
+    <div class="background">
+        <img class="backgroundimage" src="image-folder/internet_food_meshi_tero.png" alt="image2">
+        <img class="backgroundimage" src="image-folder/computer_net_stalker_man.png" alt="image1">
+    </div>
+    <div class="txt-container">
+        <h2>Twitterのブックマークツイートをまとめよう</h2>
+    </div>
+</div>
+
+<div class="container">
+
+<div class="nav-tab-container">
+    <ul class="nav nav-pills nav-fill">
+        <li class="nav-item">
+          <a href="#tweets1" class="nav-link active" data-toggle="tab">リスト１</a>
+        </li>
+        <li class="nav-item">
+          <a href="#tweets2" class="nav-link" data-toggle="tab">リスト2</a>
+        </li>
+        <li class="nav-item">
+          <a href="#tweets3" class="nav-link" data-toggle="tab">リスト3</a>
+        </li>
+        <li class="nav-item">
+          <a href="#tweets4" class="nav-link" data-toggle="tab">リスト4</a>
+        </li>
+      </ul>
+</div>
+
+<div class="tab-content">
+    <div id="tweets1" class="tab-pane active">
+        <div class="row rounded">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="input1" placeholder="ツイートのリンクをコピペしてね" aria-label="tweet input" aria-describedby="button-addon2">
+                <button class="btn btn-outline-secondary" type="button" id="button-addon1">貼り付け</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="tweets2" class="tab-pane">
+        <div class="row rounded">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="input2" placeholder="ツイートのリンクをコピペしてね" aria-label="tweet input" aria-describedby="button-addon2">
+                <button class="btn btn-outline-secondary" type="button" id="button-addon2">貼り付け</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="tweets3" class="tab-pane">
+        <div class="row rounded">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="input3" placeholder="ツイートのリンクをコピペしてね" aria-label="tweet input" aria-describedby="button-addon2">
+                <button class="btn btn-outline-secondary" type="button" id="button-addon3">貼り付け</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="tweets4" class="tab-pane">
+        <div class="row rounded">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="input4" placeholder="ツイートのリンクをコピペしてね" aria-label="tweet input" aria-describedby="button-addon2">
+                <button class="btn btn-outline-secondary" type="button" id="button-addon4">貼り付け</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</div>
+
+<footer>
+    <div class="back-to-top navbar-light bg-light">
+        <div class="btt-btn">
+            <a class="gohome" href="#home">
+
+                Back to Top
+            </a>
+        </div>
+    </div>
+</footer>
+
+</body>
+
+</html>
