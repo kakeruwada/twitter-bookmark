@@ -1,27 +1,34 @@
 $(document).ready(function(){
-    $('#button-addon1').on('click',function(){
-        var inpval = $('#input1').val();
-        $('#tweets1 .row').append('<div class="col-md-4 twbox"><div class="tweetContainer">'+inpval+'</div></div>')
-        $('#input1').val('');
+    var cookies = document.cookie;
+    var cookiesArray = cookies.split(';');
+    for(var c of cookiesArray){
+        var cArray = c.split('=');
+        if( cArray[0] == 'tweeturl1'){
+            $('#tweets1 .row').append('<div class="col-md-4 twbox"><div class="tweetContainer">'+decodeURIComponent(cArray[1])+'</div></div>')
+        }
+    }
+
+
+    $('.btn-outline-secondary').on('click',function(){
+        var inpval = $('.active .form-control').val();
+        var containedinp = '<div class="col-md-4 twbox"><div class="tweetContainer">' + inpval + '</div></div>';
+        var id_name = $(this).parents('.active').attr('id');
+        $('.active .row').append(containedinp);
+        $('.form-control').val('');
         $('script').remove();
-    })
-    $('#button-addon2').on('click',function(){
-        var inpval = $('#input2').val();
-        $('#tweets2 .row').append('<div class="col-md-4 twbox"><div class="tweetContainer">'+inpval+'</div></div>')
-        $('#input2').val('');
-        $('script').remove();
-    })
-    $('#button-addon3').on('click',function(){
-        var inpval = $('#input3').val();
-        $('#tweets3 .row').append('<div class="col-md-4 twbox"><div class="tweetContainer">'+inpval+'</div></div>')
-        $('#input3').val('');
-        $('script').remove();
-    })
-    $('#button-addon4').on('click',function(){
-        var inpval = $('#input4').val();
-        $('#tweets4 .row').append('<div class="col-md-4 twbox"><div class="tweetContainer">'+inpval+'</div></div>')
-        $('#input4').val('');
-        $('script').remove();
+        if( id_name == 'tweets1' ){
+            for(var c of cookiesArray){
+                var cArray = c.split('=');
+                if( cArray[0] == 'tweeturl1'){
+                    //リスト１にcookieが存在する場合
+                    var cookie1 = cArray[1] + encodeURIComponent(containedinp);
+                    document.cookie = "tweeturl1=" + cookie1;//cookieに情報を上書き
+                }else{//リスト1にcookieがない場合cookieに書き込み
+                    document.cookie = "tweeturl1=" + encodeURIComponent(containedinp);
+                }
+            }
+        }
+
     })
 
 })
