@@ -1,34 +1,51 @@
 $(document).ready(function(){
-    var cookies = document.cookie;
-    var cookiesArray = cookies.split(';');
-    for(var c of cookiesArray){
-        var cArray = c.split('=');
-        if( cArray[0] == 'tweeturl1'){
-            $('#tweets1 .row').append('<div class="col-md-4 twbox"><div class="tweetContainer">'+decodeURIComponent(cArray[1])+'</div></div>')
+
+    var arr = [];
+    if(document.cookie != null){
+        var tmp = document.cookie.split('; ');
+        for(var i=0;i<tmp.length;i++){
+            var data = tmp[i].split('=');
+            arr[data[0]] = decodeURIComponent(data[1]);
+        }
+    }
+
+    //alert(arr['tweets4']);
+
+    if( arr != null ){
+        for(var n=1;n<5;n++){
+            var twindex = 'tweets' + n;
+            if( arr[twindex] !=null ){
+                var twlink = arr[twindex].split('???');
+                for(var c=0;c<twlink.length;c++){
+                    if( arr[twindex] != null ){
+                        $('#' + twindex + ' .row').append('<div class="col-md-4 twbox"><div class="tweetContainer"><blockquote class="twitter-tweet"><a href=' + decodeURIComponent(twlink[c]) + '></a></blockquote><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></div></div>');
+                        //alert(twlink[c]);
+                    }
+                }
+            }
         }
     }
 
 
+
     $('.btn-outline-secondary').on('click',function(){
         var inpval = $('.active .form-control').val();
-        var containedinp = '<div class="col-md-4 twbox"><div class="tweetContainer">' + inpval + '</div></div>';
         var id_name = $(this).parents('.active').attr('id');
-        $('.active .row').append(containedinp);
+        $('.active .row').append('<div class="col-md-4 twbox"><div class="tweetContainer"><blockquote class="twitter-tweet"><a href=' + inpval + '></a></blockquote><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></div></div>');
         $('.form-control').val('');
         $('script').remove();
-        if( id_name == 'tweets1' ){
-            for(var c of cookiesArray){
-                var cArray = c.split('=');
-                if( cArray[0] == 'tweeturl1'){
-                    //リスト１にcookieが存在する場合
-                    var cookie1 = cArray[1] + encodeURIComponent(containedinp);
-                    document.cookie = "tweeturl1=" + cookie1;//cookieに情報を上書き
-                }else{//リスト1にcookieがない場合cookieに書き込み
-                    document.cookie = "tweeturl1=" + encodeURIComponent(containedinp);
+        for(var n=1;n<5;n++){
+            var twindex = 'tweets' + n;
+            if( id_name == twindex ){
+                if( arr[twindex] != null){
+                    document.cookie = twindex + '=' + arr[twindex]+ encodeURIComponent(inpval) + '???';
+                    arr[twindex] = arr[twindex]+ (encodeURIComponent(inpval)) + '???';
+                }else{
+                    document.cookie = twindex + '=' + encodeURIComponent(inpval) + '???';
+                    arr[twindex] = (encodeURIComponent(inpval)) + '???';
                 }
             }
         }
-
     })
 
 })
